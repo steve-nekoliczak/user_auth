@@ -1,0 +1,76 @@
+openapi: "3.0.0"
+info:
+  description: REST API for grading/aggregating grading results for DieFehlendeWörter.
+  version: "1.0.0"
+  title: REST API for de_exercise.
+
+servers:
+  - url: /api
+
+paths:
+
+  /user/register:
+    post:
+      operationId: api.user.register
+      tags:
+        - User
+      summary: Register a user.
+      description: Register a user.
+      parameters:
+        - name: username
+          in: query
+          description: User name.
+          schema:
+            type: string
+          required: True
+        - name: password
+          in: query
+          description: Password hash.
+          schema:
+            type: string
+          required: True
+        - name: email
+          in: query
+          description: Email address.
+          schema:
+            type: string
+          required: True
+      responses:
+        200:
+          description: Successfully registered a user.
+
+  /user/get_info:
+    get:
+      operationId: api.user.get_info
+      tags:
+        - User
+      summary: Get a user's information.
+      description: Get a user's information.
+      parameters:
+        - name: username
+          in: query
+          description: Username.
+          schema:
+            type: string
+          required: True
+      responses:
+        200:
+          description: Successfully retrieved user information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+components:
+  schemas:
+    user:
+      properties:
+        username:
+          type: string
+        user_id:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+
