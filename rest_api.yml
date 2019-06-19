@@ -17,21 +17,15 @@ paths:
       summary: Register a user.
       description: Register a user.
       parameters:
-        - name: username
+        - name: email
           in: query
-          description: User name.
+          description: Email address.
           schema:
             type: string
           required: True
         - name: password
           in: query
           description: Password hash.
-          schema:
-            type: string
-          required: True
-        - name: email
-          in: query
-          description: Email address.
           schema:
             type: string
           required: True
@@ -47,9 +41,9 @@ paths:
       summary: Get a user's information.
       description: Get a user's information.
       parameters:
-        - name: username
+        - name: email
           in: query
-          description: Username.
+          description: User's email address.
           schema:
             type: string
           required: True
@@ -65,12 +59,10 @@ components:
   schemas:
     user:
       properties:
-        username:
-          type: string
         user_id:
           type: string
-        password:
-          type: string
         email:
+          type: string
+        password:
           type: string
 
