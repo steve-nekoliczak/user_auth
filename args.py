@@ -1,10 +1,10 @@
 import argparse
 
-from config import connex_app
+from config import port
 
 
 def get_args():
-    ap = argparse.ArgumentParser('Handle user data for DieFehlendeWoerter.')
+    ap = argparse.ArgumentParser('Handle user data for DieFehlendenWoerter.')
 
     # Add args
     ap.add_argument('-d', '--debug',
@@ -13,15 +13,6 @@ def get_args():
 
     ap.add_argument('-p', '--port', type=int,
                     help="Port number to run this service on.",
-                    default=5014)
+                    default=port)
 
-    a = ap.parse_args()
-
-    return a
-
-
-if __name__ == "__main__":
-    args = get_args()
-
-    connex_app.run(debug=args.debug, port=args.port)
-
+    return ap.parse_args()

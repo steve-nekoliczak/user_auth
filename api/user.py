@@ -2,7 +2,7 @@ from json import loads
 
 from bson.json_util import dumps, RELAXED_JSON_OPTIONS
 
-from models import User
+from models.user import User
 
 
 def register(email, password):
